@@ -10,7 +10,7 @@ function Login() {
   const loginHandler = () => {
     setIsLogin(!isLogin);
   }
-
+<h1>hello</h1>
   const getInputData = (e) => {
     e.preventDefault();
     console.log(fullName,email,password);

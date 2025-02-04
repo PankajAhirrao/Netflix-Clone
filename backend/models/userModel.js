@@ -1,4 +1,4 @@
-import mongoose from "./backend/mongoose";
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({        //mongoose.Schema is a function of mongoose
     fullName:{
@@ -6,11 +6,11 @@ const userSchema = new mongoose.Schema({        //mongoose.Schema is a function 
         required: true                          //required is a property of mongoose.                                  
     },                                           //Schema which is used to define whether the field is required or not
     email:{
-        type: String,
+        type: String,                           
         required: true,
     },
     password:{
-        type: String,
+        type: String,       
         required: true
     },
 },{timestamps: true});                          //Schema which is used to store the time of creation and updation of the document

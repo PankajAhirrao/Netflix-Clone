@@ -16,14 +16,15 @@
 
 import express from "express";
 import dotenv from "dotenv";
-import databaseConnection from "./backend/utils/database";
+import database from './utils/database.js';
 
-databaseConnection();
+//databaseConnection();
 
 dotenv.config({                    //config is a function of dotenv
-    path:".env"
+    path:".env"                    
 });             
 
+//hello update now
 
 const app = express();             //app because we can use all functions of express in app
 const PORT = 8080;                 //port number

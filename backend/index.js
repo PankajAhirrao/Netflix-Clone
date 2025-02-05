@@ -24,7 +24,6 @@ dotenv.config({                    //config is a function of dotenv
     path:".env"                    
 });             
 
-//hello update now
 
 const app = express();             //app because we can use all functions of express in app
 const PORT = 8080;                 //port number

@@ -1,64 +1,50 @@
-//npm init
-//give package name
-//package.json file will be created
-
-//npm i express mongoose (it is framework of nodejs.It is more efficient than nodejs)
-//package-lock.json file will be created
-
-//Backend Steps
-//1. Create a server
-
-//add this code in package.json file
-//"description": "",
-// "type": "module"
-//this is done because we want to import express in our file or we can use require as below
-//const express = require("express");
-
 import express from "express";
 import dotenv from "dotenv";
-import database from './utils/database.js';
-
-//databaseConnection();
-
-dotenv.config({                    //config is a function of dotenv
-    path:".env"                    
-});             
+import database from "./utils/database.js";  // Ensure the path is correct
+import cookieParser from "cookie-parser";
+import userRoute from './routes/userroute.js';          //**changes made in name use small case userroute.js**
+//import cors from 'cors';
+import databaseConnection from "./utils/database.js";
 
 
-const app = express();             //app because we can use all functions of express in app
-const PORT = 8080;                 //port number
 
-  
+dotenv.config({ path: ".env" }); 
 
-app.listen(process.env.PORT, () => {                                         //listen is a function of express                                                             //it has parameters port and callback function
-    console.log(`Server is running on port ${process.env.PORT}`);           //`` is used for string interpolation in javascript
-});                                                               // callback function is used to check whether server is running or not                   
+const app = express(); 
+const PORT = process.env.PORT || 8080;
+databaseConnection();  // Assuming `database.js` exports a function
+ 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
+//app.use(cors());  // Enable CORS for all routes
 
 
-//node index.js to run the server in terminal we have to do it every time
-//for that we can use nodemon it will automatically run the server when we save the file
-//install nodemon
-//npm i nodemon
 
-//add this code in package.json file
-//"scripts": {"dev": "nodemon index.js"}
-//npm run dev
 
-//npm i dotenv bcryptjs cookie-parser jsonwebtoken
-//install npm i dotenv (it is used to hide the password and username of mongodb)
-//install bcryptjs (it is used to hash the password)
-//install cookie-parser (it is used to store the token in cookies)
-//install jsonwebtoken (it is used to create token)
+//api
+app.use("/api/v1/user",userRoute);                          //created api
+//http://localhost:8080/api/v1/user/register                                   
+//to test api we can use postman or thunderbolt in vs extension                          //1:51:38  and 1:54:03
 
-//import dotenv
-//create a file .env
-//write port
-//write dotenv.config({path:".env"});
+//go to thunderbolt extension
+//in new type http://localhost:8080/api/v1/user/register
+//the in body in json 
+// {
+//     "fullName":"Pankaj Ahirrao",
+//     "email":"pdahirrao25@gmail.com",
+//     "password":"123"
+//   }
+//select POST method and the send
+//we can se output in the mongodb->cluster->browse collection->test->go in user
 
-//create folders controllers,models,routes
-//controllers folder is used to write the logic of the routes
-//models folder is used to create the schema of the database
-//routes folder is used to create the routes
 
-//create a file user.js in models folder
+// Use the userRoute for routes starting with "/user"
+//app.use('/user', userRoute);
 
+// Call the database function
+
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

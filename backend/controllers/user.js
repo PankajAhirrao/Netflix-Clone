@@ -1,31 +1,30 @@
-import { user } from "../models/userModel";
+import { user } from "../models/userModel.js"; // Assuming the user model is correct
 
-const Resgister = async (req, res) => {
+export const Register = async (req, res) => {
     try {
-        const {fullName,email,password} = req.body;
-       if(!fullName || !email || !password){
-           return res.status(401).json({message: "Please fill all the fields"})
-       }
+        const { fullName, email, password } = req.body;
 
-       const userExists = await User.findOne({email});
-       if(user){
-           return res.status(401).json({message: "User Email already exists",
-            success: false,
-           })
-       }
+        if (!fullName || !email || !password) {
+            return res.status(401).json({ message: "Please fill all the fields" });
+        }
 
-       await User.create({              //used match the schema of the model values in userModels.js
-           fullName,                
-           email,
-           password
-       });
+        const existingUser = await user.findOne({ email });
+        if (existingUser) {
+            return res.status(401).json({
+                message: "User Email already exists",
+                success: false,
+            });
+        }
 
-       return res.status(201).json({message: "User registered successfully"});
+        await user.create({
+            fullName,
+            email,
+            password,
+        });
 
-
-    }
-      catch (error) {
+        return res.status(201).json({ message: "User registered successfully" });
+    } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Something went wrong" });
     }
-}
+};

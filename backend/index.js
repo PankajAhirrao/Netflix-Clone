@@ -19,7 +19,6 @@ app.use(express.json());
 app.use(cookieParser());
 //app.use(cors());  // Enable CORS for all routes
 
-//hello
 
 
 //api

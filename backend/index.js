@@ -19,13 +19,16 @@ app.use(express.json());
 app.use(cookieParser());
 //app.use(cors());  // Enable CORS for all routes
 
-
+//hello
 
 
 //api
 app.use("/api/v1/user",userRoute);                          //created api
 //http://localhost:8080/api/v1/user/register                                   
 //to test api we can use postman or thunderbolt in vs extension                          //1:51:38  and 1:54:03
+
+//****Now go on mongo DB then to your project and go to network access select current network access and select option allow from everywhere****
+
 
 //go to thunderbolt extension
 //in new type http://localhost:8080/api/v1/user/register

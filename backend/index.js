@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import database from "./utils/database.js";  // Ensure the path is correct
 import cookieParser from "cookie-parser";
 import userRoute from './routes/userroute.js';          //**changes made in name use small case userroute.js**
-//import cors from 'cors';
 import databaseConnection from "./utils/database.js";
+import cors from "cors";
 
 
 
@@ -17,7 +17,13 @@ databaseConnection();  // Assuming `database.js` exports a function
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-//app.use(cors());  // Enable CORS for all routes
+
+const corsOptions = {
+    origin:'http://localhost:3000',
+}
+
+app.use(cors(corsOptions));  // Enable CORS for all routes
+
 
 
 

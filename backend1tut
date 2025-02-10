@@ -121,3 +121,55 @@
 // app.listen(PORT, () => {
 //     console.log(`Server is running on port ${PORT}`);
 // });
+
+
+
+// //http://localhost:8080/api/v1/user/register
+// {
+//     "fullName":"Pankaj Ahirrao",
+//     "email":"pdahirrao25@gmail.com",        //in body
+//     "password":"123"
+// }                                            //use post method
+// //output
+// {
+//     "message": "User Email already exists",
+//     "success": false
+// }
+
+
+// http://localhost:8080/api/v1/user/login
+// {
+//     "email":"pdahirrao@gmail.com",
+//     "password":"123"                         //use post method
+// }
+// {
+//     "message": "Welcome back Pankaj Ahirrao",
+//     "success": true
+// }
+//see the cookie section
+
+
+// http://localhost:8080/api/v1/user/logout
+// {
+//     "email":"pdahirrao25@gmail.com",
+//     "password":"123"
+// }
+// {
+//     "message": "User Logged Out Successfully",
+//     "success": true
+// }
+//After this in cookie token becomes empty beacuse after logout user data should not be stored
+
+
+//install npm i axios in frontend
+
+//install npm i cors in backend
+
+//install npm i react-hot-toast
+//is it to display message from top like alert box
+//sign up using
+//Pankaj Ahirrao
+//pdahirrao25@gmail.com
+//123
+//toast will appear user already registered
+//same for user registered successfully/login also

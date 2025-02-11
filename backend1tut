@@ -173,3 +173,8 @@
 //123
 //toast will appear user already registered
 //same for user registered successfully/login also
+
+
+
+// navigate("/browse");                    redirect to browse page after login is done   line 29               in index.js in frontend
+// setIsLogin(true);                       redirect to login page after register the new user line 44
